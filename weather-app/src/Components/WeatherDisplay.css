@@ -1,5 +1,7 @@
 /* Styly pro komponentu WeatherDisplay */
 
+
+
 .weather-info {
   font-family: Arial, sans-serif;
   border: 1px solid #ccc;
@@ -79,6 +81,7 @@ h2 {
   margin-bottom: 20px; /* Mezera mezi jednotlivými dny */
   border : 1px solid #ccc;
   border-radius: 5px;
+  background-color: rgb(76, 168, 255);
 }
 
 .forecast-day h3 {

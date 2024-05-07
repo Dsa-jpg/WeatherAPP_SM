@@ -12,3 +12,7 @@ h1 {
     font-weight: 700;
     margin: 0;
 }
+
+.weatherConatiner {
+    background-color: rgb(157, 204, 243);
+  }

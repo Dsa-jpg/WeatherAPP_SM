@@ -47,7 +47,7 @@ const WeatherContainer = () => {
   };
 
   return (
-    <div>
+    <div className="weatherConatiner">
       <h1>Weather App</h1>
       <SearchForm onSearch={fetchWeatherData} /> 
       <WeatherDisplay weather={weather} forecast={forecast} />
