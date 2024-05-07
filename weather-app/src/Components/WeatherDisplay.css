@@ -1,0 +1,12 @@
+.forecast-day {
+    display: inline-block;
+    margin-right: 10px; /* Volitelně: pro oddělení jednotlivých dnů */
+  }
+  
+  .forecast-item {
+    margin-bottom: 5px; /* Volitelně: pro oddělení jednotlivých položek v rámci dne */
+  }
+
+  .current-weather {
+    margin-bottom: 20px;
+  }

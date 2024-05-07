@@ -5,10 +5,12 @@ import WeatherDisplay from "./WeatherDisplay";
 
 const WeatherContainer = () => {
   const [weather, setWeather] = useState(null); // Stav pro uchování dat o počasí
+  const [forecast, setForecast] = useState(null); // Stav pro uchování dat o předpovědi počasí
 
   const API_KEY = '4a9c12be42a7839f8a38931d4d2f2173';
 
   const fetchWeatherData = async (city) => {
+
     try {
       const response = await axios.get(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`
@@ -17,6 +19,9 @@ const WeatherContainer = () => {
         `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}`
         );
       console.log(weatherForecast.data);
+
+      setForecast(weatherForecast.data.list);
+
       
       const currentWeather = response.data;
 
@@ -42,7 +47,7 @@ const WeatherContainer = () => {
     <div>
       <h1>Weather App</h1>
       <SearchForm onSearch={fetchWeatherData} /> 
-      <WeatherDisplay weather={weather} /> 
+      <WeatherDisplay weather={weather} forecast={forecast} />
     </div>
   );
 };
