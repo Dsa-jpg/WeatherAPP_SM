@@ -16,8 +16,11 @@ const WeatherDisplay = ({ weather, forecast }) => {
       }
       groupedForecast[date].push(item); // Přidání dat do pole
     });
+    console.log(groupedForecast);
     return groupedForecast; // Vrácení seskupených dat
   };
+
+
 
 
   // Funkce pro zobrazení icony podle popisu z API 
