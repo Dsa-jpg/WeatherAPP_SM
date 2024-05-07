@@ -8,7 +8,7 @@
   border-radius: 5px;
   padding: 15px;
   margin: 5px;
-  background-color: rgb(76, 168, 255);
+  /*background-color: rgb(76, 168, 255);*/
   
 }
 
@@ -39,7 +39,7 @@
   border-radius: 5px;
   padding: 10px;
   margin: 10px;
-  background-color: rgb(157, 204, 243);
+  /*background-color: rgb(157, 204, 243);*/
   gap : 50px;
   font-size: 60px;
   
@@ -77,43 +77,53 @@ h2 {
 
 
 .forecast-day {
-  margin-left: 10px;
-  margin-bottom: 20px; /* Mezera mezi jednotlivými dny */
-  border : 1px solid #ccc;
-  border-radius: 5px;
-  background-color: rgb(76, 168, 255);
-}
-
-.forecast-day h3 {
-  margin-bottom: 10px; /* Mezera pod datem */
-  text-align: center;
-  border-bottom: 1px solid #ccc;
-
+  /*margin-left: 10px;
+  margin-bottom: 20px;*/
+  margin : 50px;
+  border: 1px solid #ccc;
+  border-radius: 40px;
+  overflow-x: auto; /* Přidá horizontální posuvník, pokud se obsah překračuje */
+  padding-bottom: 17px;
+  
   
 }
+
+
+.forecast-day::-webkit-scrollbar {
+  width: 0; /* Hide the scrollbar */
+}
+
+.forecast-day::-webkit-scrollbar-thumb {
+  background-color: transparent; /* Make the thumb transparent */
+}
+
 
 .forecast-items {
   display: flex;
-  flex-wrap: wrap; /* Položky se budou zalamovat na další řádek, pokud není dostatek místa */
+  flex-wrap: nowrap; /* Zabrání zalamování položek na další řádek */
   padding: 10px;
-  justify-content: space-evenly;
+  justify-content: space-evenly; /* Zarovná položky na začátek */
   gap: 10px;
   font-size: 32px;
-  
 }
 
 .forecast-item {
+  flex-shrink: 0; /* Zabraňuje zmenšování položek, pokud není dostatek místa */
   display: flex;
-  flex-direction: column; /* Položky budou vedle sebe ve sloupci */
+  flex-direction: column;
   align-items: center;
-  margin-right: 20px; /* Mezera mezi jednotlivými položkami */
-  margin-left : 20px;
   border: 1px solid #ccc;
-  border-radius: 10px;
+  border-radius: 50px;
   padding: 5px;
-  
+  min-width: 200px; /* Minimální šířka položky */
 }
 
 .forecast-item p {
-  margin-top: 5px; /* Mezera nad textem */
+  margin-top: 5px;
+}
+
+.forecast-day h3 {
+  font-size: 24px;
+  text-align: center;
+  margin: 0;
 }

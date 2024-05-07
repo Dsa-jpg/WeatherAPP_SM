@@ -37,8 +37,9 @@ const WeatherDisplay = ({ weather, forecast }) => {
         return <FontAwesomeIcon icon={faCloudShowersHeavy} style={{ color: "#1565c0" }} />;
       case "thunderstorm":
         return <FontAwesomeIcon icon={faBolt} style={{ color: "#ffeb3b" }} />;
+      case "light snow":
       case "snow":
-        return <FontAwesomeIcon icon={faSnowflake} style={{ color: "#ffffff" }} />;
+        return <FontAwesomeIcon icon={faSnowflake} style={{ color: "#ADD8E6" }} />;
       case "mist":
       case "light intensity drizzle":
         return <FontAwesomeIcon icon={faSmog} style={{ color: "#78909c" }} />;
@@ -63,11 +64,11 @@ const WeatherDisplay = ({ weather, forecast }) => {
                   </div>
               </div>
               <div className="other-details">
-              <p><FontAwesomeIcon icon={faTint} /> Humidity: {weather.Humidity}%</p>
-              <p><FontAwesomeIcon icon={faCompass} /> Pressure: {weather.Pressure}hPa</p>
-              <p><FontAwesomeIcon icon={faWind} /> Wind Speed: {weather.WindSpeed}m/s</p>
-              <p><FontAwesomeIcon icon={faSun} /> Sunrise: {weather.SunRise} CEST</p>
-              <p><FontAwesomeIcon icon={faMoon} /> Sunset: {weather.SunSet} CEST</p>
+              <p><FontAwesomeIcon icon={faTint} style={{ color: "#ADD8E6" }} /> Humidity: {weather.Humidity}%</p>
+              <p><FontAwesomeIcon icon={faCompass} style={{color: "gray"}} /> Pressure: {weather.Pressure}hPa</p>
+              <p><FontAwesomeIcon icon={faWind}  style={{ color: "#90a4ae"  }} /> Wind Speed: {weather.WindSpeed}m/s</p>
+              <p><FontAwesomeIcon icon={faSun} style={{ color: "#fdd835" }} /> Sunrise: {weather.SunRise} CEST</p>
+              <p><FontAwesomeIcon icon={faMoon}  /> Sunset: {weather.SunSet} CEST</p>
               </div>
             </div>
           </div>
