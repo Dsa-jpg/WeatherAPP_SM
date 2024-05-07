@@ -6,6 +6,8 @@
   border-radius: 5px;
   padding: 15px;
   margin: 5px;
+  background-color: rgb(76, 168, 255);
+  
 }
 
 .city-date {
@@ -21,12 +23,14 @@
 .details-container {
   display: flex;
   justify-content: space-between;
+  padding: 10px;
+  gap: 10px;
 }
 
 .temperature {
   flex: 1;
   text-align: center;
-  border: 1px solid #ccc;
+  border: none;
   border-radius: 5px;
   padding: 10px;
   margin: 10px;
@@ -34,6 +38,7 @@
 }
 
 .temperature h3 {
+  
   font-size: 36px;
   margin: 0;
 }
@@ -46,18 +51,36 @@
   margin: 5px 0;
 }
 
+.other-details p {
+  display: block; /* Každý prvek bude zobrazen jako samostatný blok */
+  margin-bottom: 10px; /* Mezera mezi bloky */
+}
 
+.svg-inline--fa {
+  margin: 5px;
+}
 
 
 .forecast-day {
-    display: inline-block;
-    margin-right: 10px; /* Volitelně: pro oddělení jednotlivých dnů */
-  }
-  
-  .forecast-item {
-    margin-bottom: 5px; /* Volitelně: pro oddělení jednotlivých položek v rámci dne */
-  }
+  margin-bottom: 20px; /* Mezera mezi jednotlivými dny */
+}
 
-  .current-weather {
-    margin-bottom: 20px;
-  }
+.forecast-day h3 {
+  margin-bottom: 10px; /* Mezera pod datem */
+}
+
+.forecast-items {
+  display: flex;
+  flex-wrap: wrap; /* Položky se budou zalamovat na další řádek, pokud není dostatek místa */
+}
+
+.forecast-item {
+  display: flex;
+  flex-direction: column; /* Položky budou vedle sebe ve sloupci */
+  align-items: center;
+  margin-right: 20px; /* Mezera mezi jednotlivými položkami */
+}
+
+.forecast-item p {
+  margin-top: 5px; /* Mezera nad textem */
+}

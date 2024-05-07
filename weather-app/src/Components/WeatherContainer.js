@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import SearchForm from "./SearchForm";
 import WeatherDisplay from "./WeatherDisplay";
+import "./WeatherContainer.css";
 
 const WeatherContainer = () => {
   const [weather, setWeather] = useState(null); // Stav pro uchování dat o počasí
@@ -24,6 +25,8 @@ const WeatherContainer = () => {
 
       
       const currentWeather = response.data;
+
+      console.log(currentWeather);
 
       const temperatureToCelsius = currentWeather.main.temp - 273.15;
       setWeather({

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './SearchForm.css';
 
 const SearchForm = ({ onSearch }) => {
   const [city, setCity] = useState(""); // Stav pro uchování hodnoty zadaného města
@@ -13,14 +14,16 @@ const SearchForm = ({ onSearch }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Enter city"
-        value={city}
-        onChange={handleChange}
-      />
-      <button type="submit">Search</button>
+    <form className="form-container" onSubmit={handleSubmit}>
+      <div className="input-field">
+        <input
+          type="text"
+          placeholder="Enter city"
+          value={city}
+          onChange={handleChange}
+        />
+      </div>
+      <button className="button" type="submit">Search</button>
     </form>
   );
 };

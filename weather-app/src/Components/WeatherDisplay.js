@@ -27,6 +27,8 @@ const WeatherDisplay = ({ weather, forecast }) => {
       case "clear":
         return <FontAwesomeIcon icon={faSun} style={{ color: "#fdd835" }} />;
       case "few clouds":
+      case "scattered clouds":
+      case "overcast clouds":
       case "broken clouds":
         return <FontAwesomeIcon icon={faCloud} style={{ color: "#90a4ae" }} />;
       case "shower rain":
@@ -38,6 +40,7 @@ const WeatherDisplay = ({ weather, forecast }) => {
       case "snow":
         return <FontAwesomeIcon icon={faSnowflake} style={{ color: "#ffffff" }} />;
       case "mist":
+      case "light intensity drizzle":
         return <FontAwesomeIcon icon={faSmog} style={{ color: "#78909c" }} />;
       default:
         return null;
@@ -54,7 +57,7 @@ const WeatherDisplay = ({ weather, forecast }) => {
             </div>
             <div className="details-container">
               <div className="temperature">
-                <h3>{weather.Temperature.toFixed(2)}°C </h3>
+                <h3>{weather.Temperature.toFixed(1)}°C </h3>
                 {getWeatherIcon(weather.Description)}
               </div>
               <div className="other-details">
@@ -69,31 +72,34 @@ const WeatherDisplay = ({ weather, forecast }) => {
         </div>
       )}
       {forecast && (
-        <div>
-          <h2>Weather Forecast</h2>
-          <div className="forecast-by-day">
+          <div>
+            <h2>Weather Forecast</h2>
+            <div className="forecast-by-day">
 
-          {/* Funkce Object.entries konvertuje objekt na pole, které obsahuje pole [klíč, hodnota] pro každý pár klíč-hodnota v objektu. 
+            {/* Funkce Object.entries konvertuje objekt na pole, které obsahuje pole [klíč, hodnota] pro každý pár klíč-hodnota v objektu. 
           Tento krok je použit k iteraci přes všechny dny v předpovědi počasí a jejich příslušné předpovědi. */}
 
-            {Object.entries(groupForecastByDay(forecast)).map(([date, data], index) => (
-              <div className="forecast-day" key={index}>
-                <h3>{date}</h3>
 
-            {/* Pro každý den vytvoříme seznam s předpovědí počasí.*/}
-            
-                {data.map((item, itemIndex) => (
-                  <div key={itemIndex}>
-                    <p>{item.dt_txt.split(" ")[1]}: {(item.main.temp - 273.15).toFixed(2)}°C, {item.weather[0].description}</p>
+              {Object.entries(groupForecastByDay(forecast)).map(([date, data], index) => (
+                <div className="forecast-day" key={index}>
+                  <h3>{date}</h3>
+                  <div className="forecast-items">
+
+                  {/* Pro každý den vytvoříme seznam s předpovědí počasí.*/}
+
+                    {data.map((item, itemIndex) => (
+                      <div className="forecast-item" key={itemIndex}>
+                        <p>{item.dt_txt.split(" ")[1]}</p>
+                        <p>{(item.main.temp - 273.15).toFixed(1)}°C</p>
+                        {getWeatherIcon(item.weather[0].description)}
+                      </div>
+                    ))}
                   </div>
-                ))}
-
-              </div>
-              
-            ))}
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      )}
+        )}
     </div>
   );
 };
