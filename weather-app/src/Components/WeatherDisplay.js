@@ -35,7 +35,7 @@ const WeatherDisplay = ({ weather, forecast }) => {
           <h2>Weather Forecast</h2>
           <div className="forecast-by-day">
 
-          {/* Funkce Object.entrieskonvertuje objekt na pole, které obsahuje pole [klíč, hodnota] pro každý pár klíč-hodnota v objektu. 
+          {/* Funkce Object.entries konvertuje objekt na pole, které obsahuje pole [klíč, hodnota] pro každý pár klíč-hodnota v objektu. 
           Tento krok je použit k iteraci přes všechny dny v předpovědi počasí a jejich příslušné předpovědi. */}
 
             {Object.entries(groupForecastByDay(forecast)).map(([date, data], index) => (
@@ -49,7 +49,9 @@ const WeatherDisplay = ({ weather, forecast }) => {
                     <p>{item.dt_txt.split(" ")[1]}: {(item.main.temp - 273.15).toFixed(2)}°C, {item.weather[0].description}</p>
                   </div>
                 ))}
+
               </div>
+              
             ))}
           </div>
         </div>
