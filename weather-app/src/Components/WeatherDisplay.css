@@ -22,9 +22,10 @@
 
 .details-container {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   padding: 10px;
-  gap: 10px;
+  gap: 25px;
 }
 
 .temperature {
@@ -44,7 +45,7 @@
 }
 
 .other-details {
-  flex: 2;
+  flex: 1;
 }
 
 .other-details p {
@@ -72,6 +73,11 @@
 .forecast-items {
   display: flex;
   flex-wrap: wrap; /* Položky se budou zalamovat na další řádek, pokud není dostatek místa */
+  border : 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  justify-content: space-between;
+  gap: 10px;
 }
 
 .forecast-item {
@@ -79,6 +85,8 @@
   flex-direction: column; /* Položky budou vedle sebe ve sloupci */
   align-items: center;
   margin-right: 20px; /* Mezera mezi jednotlivými položkami */
+  margin-left : 20px;
+  
 }
 
 .forecast-item p {
