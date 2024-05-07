@@ -30,7 +30,7 @@ const WeatherDisplay = ({ weather, forecast }) => {
       case "scattered clouds":
       case "overcast clouds":
       case "broken clouds":
-        return <FontAwesomeIcon icon={faCloud} style={{ color: "#90a4ae" }} />;
+        return <FontAwesomeIcon icon={faCloud} style={{ color: "#90a4ae"  }} />;
       case "shower rain":
       case "rain":
       case "light rain":
@@ -58,7 +58,9 @@ const WeatherDisplay = ({ weather, forecast }) => {
             <div className="details-container">
               <div className="temperature">
                 <h3>{weather.Temperature.toFixed(1)}°C </h3>
-                {getWeatherIcon(weather.Description)}
+                  <div className="description">
+                    {getWeatherIcon(weather.Description)}
+                  </div>
               </div>
               <div className="other-details">
               <p><FontAwesomeIcon icon={faTint} /> Humidity: {weather.Humidity}%</p>
