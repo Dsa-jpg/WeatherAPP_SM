@@ -34,6 +34,8 @@ const WeatherDisplay = ({ weather, forecast }) => {
       case "overcast clouds":
       case "broken clouds":
         return <FontAwesomeIcon icon={faCloud} style={{ color: "#90a4ae"  }} />;
+      case "light intensity shower rain":
+      case "moderate rain":
       case "shower rain":
       case "rain":
       case "light rain":
