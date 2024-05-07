@@ -1,3 +1,54 @@
+/* Styly pro komponentu WeatherDisplay */
+
+.weather-info {
+  font-family: Arial, sans-serif;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 15px;
+  margin: 5px;
+}
+
+.city-date {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.city-date h2 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.details-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.temperature {
+  flex: 1;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  background-color: rgb(157, 204, 243);
+}
+
+.temperature h3 {
+  font-size: 36px;
+  margin: 0;
+}
+
+.other-details {
+  flex: 2;
+}
+
+.other-details p {
+  margin: 5px 0;
+}
+
+
+
+
 .forecast-day {
     display: inline-block;
     margin-right: 10px; /* Volitelně: pro oddělení jednotlivých dnů */

@@ -1,5 +1,8 @@
 import React from "react";
 import "./WeatherDisplay.css";
+import { faSun, faCloud, faCloudShowersHeavy, faBolt, faSnowflake, faSmog } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTint, faCompass, faWind, faMoon } from '@fortawesome/free-solid-svg-icons';
 
 const WeatherDisplay = ({ weather, forecast }) => {
 
@@ -16,18 +19,53 @@ const WeatherDisplay = ({ weather, forecast }) => {
     return groupedForecast; // Vrácení seskupených dat
   };
 
+
+  // Funkce pro zobrazení icony podle popisu z API 
+  const getWeatherIcon = (weatherType) => {
+    switch (weatherType) {
+      case "clear sky":
+      case "clear":
+        return <FontAwesomeIcon icon={faSun} style={{ color: "#fdd835" }} />;
+      case "few clouds":
+      case "broken clouds":
+        return <FontAwesomeIcon icon={faCloud} style={{ color: "#90a4ae" }} />;
+      case "shower rain":
+      case "rain":
+      case "light rain":
+        return <FontAwesomeIcon icon={faCloudShowersHeavy} style={{ color: "#1565c0" }} />;
+      case "thunderstorm":
+        return <FontAwesomeIcon icon={faBolt} style={{ color: "#ffeb3b" }} />;
+      case "snow":
+        return <FontAwesomeIcon icon={faSnowflake} style={{ color: "#ffffff" }} />;
+      case "mist":
+        return <FontAwesomeIcon icon={faSmog} style={{ color: "#78909c" }} />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <div>
       {weather && (
         <div className="current-weather">
-          <h2>{weather.City}, {weather.Country}, {weather.Date}</h2>
-          <h3>{weather.Temperature.toFixed(2)}°C</h3>
-          <p>{weather.Description}</p>
-          <p>Humidity: {weather.Humidity}%</p>
-          <p>Pressure: {weather.Pressure}hPa</p>
-          <p>Wind Speed: {weather.WindSpeed}m/s</p>
-          <p>Sunrise: {weather.SunRise} CEST</p>
-          <p>Sunset: {weather.SunSet} CEST</p>
+          <div className="weather-info">
+            <div className="city-date">
+              <h2>{weather.City}, {weather.Country}, {weather.Date}</h2>
+            </div>
+            <div className="details-container">
+              <div className="temperature">
+                <h3>{weather.Temperature.toFixed(2)}°C </h3>
+                {getWeatherIcon(weather.Description)}
+              </div>
+              <div className="other-details">
+              <p><FontAwesomeIcon icon={faTint} /> Humidity: {weather.Humidity}%</p>
+              <p><FontAwesomeIcon icon={faCompass} /> Pressure: {weather.Pressure}hPa</p>
+              <p><FontAwesomeIcon icon={faWind} /> Wind Speed: {weather.WindSpeed}m/s</p>
+              <p><FontAwesomeIcon icon={faSun} /> Sunrise: {weather.SunRise} CEST</p>
+              <p><FontAwesomeIcon icon={faMoon} /> Sunset: {weather.SunSet} CEST</p>
+              </div>
+            </div>
+          </div>
         </div>
       )}
       {forecast && (
