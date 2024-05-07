@@ -2,6 +2,8 @@ import React from "react";
 import "./WeatherDisplay.css";
 
 const WeatherDisplay = ({ weather, forecast }) => {
+
+  // Funkce pro seskupení předpovědi počasí podle data (den)
   const groupForecastByDay = (forecastData) => {
     const groupedForecast = {}; // Objekt pro uchování předpovědi počasí seskupené podle data
     forecastData.forEach((item) => { // Procházení dat předpovědi počasí
