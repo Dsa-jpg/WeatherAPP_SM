@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTint, faCompass, faWind, faMoon, faCloudRain, faCloudSun, faCloudBolt } from '@fortawesome/free-solid-svg-icons';
 
 
-const WeatherDisplay = ({ weather, forecast }) => {
+const WeatherDisplay = ({ weather, forecast  }) => {
 
   // Funkce pro seskupení předpovědi počasí podle data (den)
   const groupForecastByDay = (forecastData) => {
@@ -107,6 +107,7 @@ const WeatherDisplay = ({ weather, forecast }) => {
               {Object.entries(groupForecastByDay(forecast)).map(([date, data], index) => (
                 <div className="forecast-day" key={index}>
                   <h3>{date}</h3>
+
                   <div className="forecast-items">
 
                   {/* Pro každý den vytvoříme seznam s předpovědí počasí.*/}
