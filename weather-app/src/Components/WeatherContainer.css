@@ -11,10 +11,24 @@ h1 {
     text-shadow: 5px 2px 4px #cacaca;
 }
 
+h2 {
+    font-family: "Inconsolata", monospace;
+    
+}
+
+h3 {
+    font-family: "Inconsolata", monospace;
+    text-align: center;
+
+}
+
 .temperature {
     font-size: 2rem;
     font-weight: 700;
     margin: 0;
+    border: 1px solid #ccc;
+    border-radius: 40px;
+    box-shadow: #333 5px 2px 4px;
 }
 /*
 .weatherConatiner {
