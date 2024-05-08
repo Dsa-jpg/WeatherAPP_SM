@@ -10,6 +10,25 @@ const WeatherContainer = () => {
 
   const API_KEY = '4a9c12be42a7839f8a38931d4d2f2173';
 
+  // Funkce pro nastavení formatu pro počasí 
+  function getTimeFormatByCountry(countryCode) {
+    switch (countryCode) {
+        case 'CZ':
+            return 'cs-CZ'; // český formát času
+        case 'US':
+            return 'en-US'; // americký formát času
+        case 'GB':
+            return 'en-GB'; // britský formát času
+        case 'DE': 
+            return 'de-DE'; // německý formát času
+        case 'FR':
+            return 'fr-FR'; // francouzský formát času
+        default:
+            return 'cs-CZ'; // výchozí nastavení, pokud není země známa
+    }
+}
+
+
   const fetchWeatherData = async (city) => {
 
     try {
@@ -38,8 +57,8 @@ const WeatherContainer = () => {
         Humidity: currentWeather.main.humidity,
         Pressure: currentWeather.main.pressure,
         WindSpeed: currentWeather.wind.speed,
-        SunRise: new Date(currentWeather.sys.sunrise * 1000).toLocaleTimeString(),
-        SunSet: new Date(currentWeather.sys.sunset * 1000).toLocaleTimeString(),
+        SunRise: new Date(currentWeather.sys.sunrise * 1000).toLocaleTimeString(getTimeFormatByCountry(currentWeather.sys.country)),
+        SunSet: new Date(currentWeather.sys.sunset * 1000).toLocaleTimeString(getTimeFormatByCountry(currentWeather.sys.country)),
       });
     } catch (error) {
       console.error('Error fetching data: ', error);

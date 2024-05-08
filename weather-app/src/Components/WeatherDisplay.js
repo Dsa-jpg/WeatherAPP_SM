@@ -1,8 +1,9 @@
 import React from "react";
 import "./WeatherDisplay.css";
-import { faSun, faCloud, faCloudShowersHeavy, faBolt, faSnowflake, faSmog } from '@fortawesome/free-solid-svg-icons';
+import { faSun, faCloud, faCloudShowersHeavy, faSnowflake, faSmog } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTint, faCompass, faWind, faMoon } from '@fortawesome/free-solid-svg-icons';
+import { faTint, faCompass, faWind, faMoon, faCloudRain, faCloudSun, faCloudBolt } from '@fortawesome/free-solid-svg-icons';
+
 
 const WeatherDisplay = ({ weather, forecast }) => {
 
@@ -19,7 +20,19 @@ const WeatherDisplay = ({ weather, forecast }) => {
     console.log(groupedForecast);
     return groupedForecast; // Vrácení seskupených dat
   };
+  /*
+    // Funkce pro zobrazení času východu/západu slunce podle časové zóny země
+    const getTimeByCountry = (timestamp, countryCode) => {
+      const options = {
+        hour12: false, // Nastavte na true pro 12h formát, false pro 24h formát
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric'
+      };
 
+    return new Date(timestamp * 1000).toLocaleTimeString(getTimeFormatByCountry(countryCode), options);
+  };
+  */
 
 
 
@@ -30,18 +43,20 @@ const WeatherDisplay = ({ weather, forecast }) => {
       case "clear":
         return <FontAwesomeIcon icon={faSun} style={{ color: "#fdd835" }} />;
       case "few clouds":
+        return <FontAwesomeIcon icon={faCloudSun} style={{"--fa-primary-color": "#a3a3a3", "--fa-secondary-color": "#fbff00",}} />;
       case "scattered clouds":
       case "overcast clouds":
       case "broken clouds":
         return <FontAwesomeIcon icon={faCloud} style={{ color: "#90a4ae"  }} />;
-      case "light intensity shower rain":
       case "moderate rain":
       case "shower rain":
+        return <FontAwesomeIcon icon={faCloudRain} style={{"--fa-primary-color": "#525252", "--fa-secondary-color": "#0040ff",}} />;
+      case "light intensity shower rain":
       case "rain":
       case "light rain":
-        return <FontAwesomeIcon icon={faCloudShowersHeavy} style={{ color: "#1565c0" }} />;
+        return <FontAwesomeIcon icon={faCloudShowersHeavy} style={{"--fa-primary-color": "#4a4a4a", "--fa-secondary-color": "#005eff",}} />
       case "thunderstorm":
-        return <FontAwesomeIcon icon={faBolt} style={{ color: "#ffeb3b" }} />;
+        return <FontAwesomeIcon icon={faCloudBolt} style={{"--fa-primary-color": "#575757", "--fa-secondary-color": "#fbff00",}} />;
       case "light snow":
       case "snow":
         return <FontAwesomeIcon icon={faSnowflake} style={{ color: "#ADD8E6" }} />;
@@ -72,8 +87,8 @@ const WeatherDisplay = ({ weather, forecast }) => {
               <p><FontAwesomeIcon icon={faTint} style={{ color: "#ADD8E6" }} /> Humidity: {weather.Humidity}%</p>
               <p><FontAwesomeIcon icon={faCompass} style={{color: "gray"}} /> Pressure: {weather.Pressure}hPa</p>
               <p><FontAwesomeIcon icon={faWind}  style={{ color: "#90a4ae"  }} /> Wind Speed: {weather.WindSpeed}m/s</p>
-              <p><FontAwesomeIcon icon={faSun} style={{ color: "#fdd835" }} /> Sunrise: {weather.SunRise} CEST</p>
-              <p><FontAwesomeIcon icon={faMoon}  /> Sunset: {weather.SunSet} CEST</p>
+              <p><FontAwesomeIcon icon={faSun} style={{ color: "#fdd835" }} /> Sunrise: {weather.SunRise} </p>
+              <p><FontAwesomeIcon icon={faMoon}  /> Sunset: {weather.SunSet}</p>
               </div>
             </div>
           </div>
@@ -97,6 +112,7 @@ const WeatherDisplay = ({ weather, forecast }) => {
 
                     {data.map((item, itemIndex) => (
                       <div className="forecast-item" key={itemIndex}>
+                        {/*<p>{getTimeByCountry(item.dt, Country)}</p>  Čas podle země */}
                         <p>{item.dt_txt.split(" ")[1]}</p>
                         <p>{(item.main.temp - 273.15).toFixed(1)}°C</p>
                         {getWeatherIcon(item.weather[0].description)}
