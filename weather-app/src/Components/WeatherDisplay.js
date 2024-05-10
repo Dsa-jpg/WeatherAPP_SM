@@ -4,10 +4,20 @@ import { faSun, faCloud, faCloudShowersHeavy, faSnowflake, faSmog } from '@forta
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTint, faCompass, faWind, faMoon, faCloudRain, faCloudSun, faCloudBolt } from '@fortawesome/free-solid-svg-icons';
 
-
+/**
+ * Komponenta WeatherDisplay zobrazuje aktuální počasí a předpověď počasí pro dané město.
+ * @param {Object} props - Props pro komponentu.
+ * @param {Object} props.weather - Data o aktuálním počasí.
+ * @param {Object[]} props.forecast - Pole s daty o předpovědi počasí.
+ * @returns {JSX.Element} - JSX element reprezentující komponentu WeatherDisplay.
+ */
 const WeatherDisplay = ({ weather, forecast  }) => {
 
-  // Funkce pro seskupení předpovědi počasí podle data (den)
+  /**
+   * Funkce pro seskupení předpovědi počasí podle data (den).
+   * @param {Object[]} forecastData - Pole s daty o předpovědi počasí.
+   * @returns {Object} - Objekt obsahující seskupenou předpověď počasí podle data.
+   */
   const groupForecastByDay = (forecastData) => {
     const groupedForecast = {}; // Objekt pro uchování předpovědi počasí seskupené podle data
     forecastData.forEach((item) => { // Procházení dat předpovědi počasí
@@ -36,7 +46,11 @@ const WeatherDisplay = ({ weather, forecast  }) => {
 
 
 
-  // Funkce pro zobrazení icony podle popisu z API 
+  /**
+   * Funkce pro získání ikony počasí podle popisu z API.
+   * @param {string} weatherType - Popis počasí získaný z API.
+   * @returns {JSX.Element|null} - JSX element reprezentující ikonu počasí nebo null, pokud ikona není dostupná.
+   */
   const getWeatherIcon = (weatherType) => {
     switch (weatherType) {
       case "clear sky":
