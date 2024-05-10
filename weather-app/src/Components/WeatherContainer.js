@@ -7,6 +7,7 @@ import "./WeatherContainer.css";
 const WeatherContainer = () => {
   const [weather, setWeather] = useState(null); // Stav pro uchování dat o počasí
   const [forecast, setForecast] = useState(null); // Stav pro uchování dat o předpovědi počasí
+  const [error, setError] = useState(null); // Stav pro uchování chybové zprávy
 
   const API_KEY = '4a9c12be42a7839f8a38931d4d2f2173';
 
@@ -23,6 +24,10 @@ const WeatherContainer = () => {
             return 'de-DE'; // německý formát času
         case 'FR':
             return 'fr-FR'; // francouzský formát času
+        case 'ES':
+            return 'es-ES'; // španělský formát času
+        case 'IT':
+            return 'it-IT'; // italský formát času
         default:
             return 'cs-CZ'; // výchozí nastavení, pokud není země známa
     }
@@ -60,15 +65,17 @@ const WeatherContainer = () => {
         SunRise: new Date(currentWeather.sys.sunrise * 1000).toLocaleTimeString(getTimeFormatByCountry(currentWeather.sys.country)),
         SunSet: new Date(currentWeather.sys.sunset * 1000).toLocaleTimeString(getTimeFormatByCountry(currentWeather.sys.country)),
       });
+      setError(null); // Pokud se podaří načíst data, vymaž chybovou zprávu
     } catch (error) {
       console.error('Error fetching data: ', error);
+      setError("City not found. Please enter a valid city."); // Nastavení chybové zprávy
     }
   };
 
   return (
     <div className="weatherConatiner">
       <h1>Weather App</h1>
-      <SearchForm onSearch={fetchWeatherData} /> 
+      <SearchForm onSearch={fetchWeatherData} error={error} /> 
       <WeatherDisplay weather={weather} forecast={forecast} />
     </div>
   );

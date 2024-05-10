@@ -23,3 +23,11 @@
     border-radius: 5px;
     cursor: pointer;
   }
+
+
+  .error-message {
+    font-family: "Inconsolata", monospace;
+    color: red;
+    font-size: 16px;
+    text-align: center;
+  }

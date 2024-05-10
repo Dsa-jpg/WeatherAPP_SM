@@ -17,7 +17,7 @@ const WeatherDisplay = ({ weather, forecast  }) => {
       }
       groupedForecast[date].push(item); // Přidání dat do pole
     });
-    console.log(groupedForecast);
+    console.log(groupedForecast); // Vypsání seskupených dat do konzole
     return groupedForecast; // Vrácení seskupených dat
   };
   /*
