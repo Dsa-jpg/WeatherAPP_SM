@@ -4,6 +4,10 @@ import SearchForm from "./SearchForm";
 import WeatherDisplay from "./WeatherDisplay";
 import "./WeatherContainer.css";
 
+/**
+ * Komponenta WeatherContainer slouží jako nadřazená komponenta pro zobrazování aktuálního počasí a předpovědi počasí.
+ * @returns {JSX.Element} - JSX element reprezentující komponentu WeatherContainer.
+ */
 const WeatherContainer = () => {
   const [weather, setWeather] = useState(null); // Stav pro uchování dat o počasí
   const [forecast, setForecast] = useState(null); // Stav pro uchování dat o předpovědi počasí
@@ -11,7 +15,11 @@ const WeatherContainer = () => {
 
   const API_KEY = '4a9c12be42a7839f8a38931d4d2f2173';
 
-  // Funkce pro nastavení formatu pro počasí 
+  /**
+   * Funkce pro nastavení formátu času podle země.
+   * @param {string} countryCode - Kód země.
+   * @returns {string} - Formát času pro danou zemi.
+   */ 
   function getTimeFormatByCountry(countryCode) {
     switch (countryCode) {
         case 'CZ':
@@ -33,7 +41,10 @@ const WeatherContainer = () => {
     }
 }
 
-
+  /**
+   * Funkce pro načtení dat o počasí a předpovědi počasí pro zadané město.
+   * @param {string} city - Název města.
+   */
   const fetchWeatherData = async (city) => {
 
     try {
@@ -75,7 +86,9 @@ const WeatherContainer = () => {
   return (
     <div className="weatherConatiner">
       <h1>Weather App</h1>
+      {/* Komponenta SearchForm pro vyhledávání města a zobrazení chybové zprávy */}
       <SearchForm onSearch={fetchWeatherData} error={error} /> 
+      {/* Komponenta WeatherDisplay pro zobrazení aktuálního počasí a předpovědi počasí */}
       <WeatherDisplay weather={weather} forecast={forecast} />
     </div>
   );
