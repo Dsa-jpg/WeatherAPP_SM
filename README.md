@@ -36,6 +36,7 @@ Jednoduchá webová aplikace pro zobrazení aktuálního počasí a předpovědi
 ## Ukázka
 
 ![Ukázka aplikace](example.png)
+*Tento obrázek zobrazuje ukázku mojí aplikace zobrazující aktuální počasí a předpověď počasí.*
 
 ## Licence
 
